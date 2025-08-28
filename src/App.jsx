@@ -17,12 +17,12 @@ function App() {
 
   // Constantes fijas
   const regularHours = 40;
-  const overtimeHours = 5;
+  const overtimeHours = 5.63;
   
-  // Porcentajes de deducciones (aproximados del recibo original)
-  const federalRate = 0.095; // ~9.5%
-  const socialSecurityRate = 0.062; // 6.2%
-  const medicareRate = 0.0145; // 1.45%
+  // Porcentajes de deducciones (corregidos según valores reales)
+  const federalRate = 0.08831; // 8.831%
+  const socialSecurityRate = 0.06202; // 6.202%
+  const medicareRate = 0.01450; // 1.450%
   
   // Lógica de cálculo según el modo seleccionado
   let hourlyRate, overtimeRate, regularPay, overtimePay, grossPay, federalIncome, socialSecurity, medicare, netPay;
