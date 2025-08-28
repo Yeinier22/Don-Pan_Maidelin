@@ -6,6 +6,7 @@ function App() {
   // Estado para el valor neto (input principal)
   const [netEarnings, setNetEarnings] = useState(863.83);
   const [animateValues, setAnimateValues] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(true);
 
   // Constantes fijas
   const regularHours = 40;
@@ -48,16 +49,24 @@ function App() {
     return () => clearTimeout(timer);
   }, [netEarnings]);
 
+  // Efecto para manejar la animación de entrada fullscreen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFullscreen(false);
+    }, 3000); // Cambia a normal después de 3 segundos
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleNetEarningsChange = (e) => {
     setNetEarnings(Number(e.target.value));
   };
 
   return (
     <>
-      <div className="don-pan-banner">
+      <div className={`don-pan-banner ${isFullscreen ? 'fullscreen' : ''}`}>
         🍞 DON PAN 🍞
       </div>
-      <div className="payroll-container">
+      <div className="payroll-container" style={{opacity: isFullscreen ? 0 : 1, transition: 'opacity 1s ease-in-out'}}>
         <h2>Earnings Statement</h2>
       <div className="input-group">
         <label htmlFor="netEarnings">Net Pay Regular+Overtime:</label>
