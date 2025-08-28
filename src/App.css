@@ -1,10 +1,15 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .logo {
@@ -15,22 +20,33 @@
 }
 
 .payroll-container {
-  max-width: 600px;
-  margin: 40px auto;
+  max-width: 100%;
+  width: 100%;
+  margin: 20px auto;
   background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
   border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.1);
-  padding: 40px 32px;
+  padding: 20px 16px;
   font-family: 'Segoe UI', Arial, sans-serif;
   border: 1px solid rgba(255,255,255,0.3);
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+/* Responsive para móviles */
+@media (min-width: 768px) {
+  .payroll-container {
+    max-width: 600px;
+    padding: 40px 32px;
+    margin: 40px auto;
+  }
 }
 
 .payroll-container h2 {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   color: #2d3748;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
@@ -39,16 +55,35 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Responsive para desktop */
+@media (min-width: 768px) {
+  .payroll-container h2 {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+}
+
 .input-group {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 12px;
+  margin-bottom: 24px;
   justify-content: center;
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  padding: 20px;
+  padding: 16px;
   border-radius: 15px;
   border: 2px solid #e2e8f0;
+}
+
+/* Responsive para desktop */
+@media (min-width: 768px) {
+  .input-group {
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 20px;
+  }
 }
 
 .input-group label {
@@ -62,7 +97,8 @@
   border-radius: 10px;
   border: 2px solid #cbd5e0;
   font-size: 1.1rem;
-  width: 120px;
+  width: 100%;
+  max-width: 200px;
   background: white;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -85,6 +121,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Responsive para desktop */
+@media (min-width: 768px) {
+  .input-group input {
+    width: 120px;
+  }
+}
+
 .input-group input:focus {
   outline: none;
   border-color: #667eea;
@@ -104,13 +147,25 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
 }
 
 .payroll-table th, .payroll-table td {
   border: none;
-  padding: 16px 12px;
+  padding: 12px 8px;
   text-align: center;
   transition: all 0.3s ease;
+}
+
+/* Responsive para móviles */
+@media (min-width: 768px) {
+  .payroll-table {
+    font-size: 1rem;
+  }
+  
+  .payroll-table th, .payroll-table td {
+    padding: 16px 12px;
+  }
 }
 
 .payroll-table th {
@@ -265,10 +320,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
+  font-size: 3rem;
   border-radius: 0;
   animation: shrinkToNormal 3s ease-in-out forwards, colorShift 3s ease-in-out infinite;
   z-index: 9999;
+}
+
+/* Responsive para desktop */
+@media (min-width: 768px) {
+  .don-pan-banner.fullscreen {
+    font-size: 6rem;
+  }
 }
 
 @keyframes shrinkToNormal {
@@ -277,7 +339,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    font-size: 6rem;
+    font-size: 3rem;
     border-radius: 0;
     padding: 0;
   }
@@ -286,7 +348,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    font-size: 6rem;
+    font-size: 3rem;
     border-radius: 0;
     padding: 0;
   }
@@ -298,6 +360,39 @@
     font-size: 1.8rem;
     border-radius: 15px;
     padding: 15px 30px;
+  }
+}
+
+/* Responsive para desktop */
+@media (min-width: 768px) {
+  @keyframes shrinkToNormal {
+    0% {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      font-size: 6rem;
+      border-radius: 0;
+      padding: 0;
+    }
+    70% {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      font-size: 6rem;
+      border-radius: 0;
+      padding: 0;
+    }
+    100% {
+      width: auto;
+      height: auto;
+      top: 20px;
+      right: -300px;
+      font-size: 1.8rem;
+      border-radius: 15px;
+      padding: 15px 30px;
+    }
   }
 }
 
