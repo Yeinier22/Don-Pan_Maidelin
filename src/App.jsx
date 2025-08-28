@@ -6,13 +6,14 @@ function App() {
   // Estado para el valor neto (input principal)
   const [netEarnings, setNetEarnings] = useState(850);
   const [inputValue, setInputValue] = useState('850');
+  const [creditCardTips, setCreditCardTips] = useState(208);
+  const [creditCardInputValue, setCreditCardInputValue] = useState('208');
   const [animateValues, setAnimateValues] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(true);
 
   // Constantes fijas
   const regularHours = 40;
   const overtimeHours = 5;
-  const creditCardTips = 208; // Valor fijo
   
   // Porcentajes de deducciones (aproximados del recibo original)
   const federalRate = 0.095; // ~9.5%
@@ -48,7 +49,7 @@ function App() {
     setAnimateValues(true);
     const timer = setTimeout(() => setAnimateValues(false), 600);
     return () => clearTimeout(timer);
-  }, [inputValue]);
+  }, [inputValue, creditCardInputValue]);
 
   // Efecto para manejar la animación de entrada fullscreen
   useEffect(() => {
@@ -71,6 +72,19 @@ function App() {
     }
   };
 
+  const handleCreditCardTipsChange = (e) => {
+    const value = e.target.value;
+    setCreditCardInputValue(value);
+    
+    // Solo actualizar creditCardTips si hay un valor válido
+    if (value === '' || value === null || value === undefined) {
+      setCreditCardTips(0);
+    } else {
+      const numValue = Number(value);
+      setCreditCardTips(isNaN(numValue) ? 0 : numValue);
+    }
+  };
+
   return (
     <>
       <div className={`don-pan-banner ${isFullscreen ? 'fullscreen' : ''}`}>
@@ -87,6 +101,22 @@ function App() {
           value={inputValue}
           onChange={handleNetEarningsChange}
           placeholder="Enter net earnings"
+          inputMode="decimal"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+      </div>
+      <div className="input-group">
+        <label htmlFor="creditCardTips">Credit Card Tips:</label>
+        <input
+          id="creditCardTips"
+          type="number"
+          step="0.01"
+          value={creditCardInputValue}
+          onChange={handleCreditCardTipsChange}
+          placeholder="Enter credit card tips"
           inputMode="decimal"
           autoComplete="off"
           autoCorrect="off"
@@ -126,7 +156,7 @@ function App() {
             <td>Credit card tips owed</td>
             <td>-</td>
             <td>-</td>
-            <td>${creditCardTips}</td>
+            <td className={animateValues ? 'positive-value' : ''}>${creditCardTips}</td>
           </tr>
         </tbody>
       </table>
