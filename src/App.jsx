@@ -77,6 +77,11 @@ function App() {
           value={netEarnings}
           onChange={handleNetEarningsChange}
           placeholder="Enter net earnings"
+          inputMode="decimal"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
       </div>
       <table className="payroll-table">

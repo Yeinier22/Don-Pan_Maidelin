@@ -66,6 +66,23 @@
   background: white;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  /* Estilos específicos para iOS Safari */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #2d3748 !important;
+  -webkit-text-fill-color: #2d3748 !important;
+  -webkit-opacity: 1 !important;
+  opacity: 1 !important;
+  caret-color: #667eea;
+  
+  /* Asegurar que el texto sea visible en iOS */
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .input-group input:focus {
@@ -73,6 +90,11 @@
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   transform: scale(1.02);
+  
+  /* Estilos específicos para iOS Safari en focus */
+  -webkit-text-fill-color: #2d3748 !important;
+  color: #2d3748 !important;
+  background-color: white !important;
 }
 
 .payroll-table {
