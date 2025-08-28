@@ -6,7 +6,7 @@ function App() {
   // Estado para el valor neto (input principal)
   const [netEarnings, setNetEarnings] = useState(705);
   const [inputValue, setInputValue] = useState('705');
-  const [creditCardTips, setCreditCardTips] = useState(208);
+  const [creditCardTips, setCreditCardTips] = useState(172);
   const [creditCardInputValue, setCreditCardInputValue] = useState('172');
   const [animateValues, setAnimateValues] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(true);
