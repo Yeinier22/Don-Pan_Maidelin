@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   // Estado para el valor neto (input principal)
   const [netEarnings, setNetEarnings] = useState(850);
+  const [inputValue, setInputValue] = useState('850');
   const [animateValues, setAnimateValues] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(true);
 
@@ -47,7 +48,7 @@ function App() {
     setAnimateValues(true);
     const timer = setTimeout(() => setAnimateValues(false), 600);
     return () => clearTimeout(timer);
-  }, [netEarnings]);
+  }, [inputValue]);
 
   // Efecto para manejar la animación de entrada fullscreen
   useEffect(() => {
@@ -58,7 +59,16 @@ function App() {
   }, []);
 
   const handleNetEarningsChange = (e) => {
-    setNetEarnings(Number(e.target.value));
+    const value = e.target.value;
+    setInputValue(value);
+    
+    // Solo actualizar netEarnings si hay un valor válido
+    if (value === '' || value === null || value === undefined) {
+      setNetEarnings(0);
+    } else {
+      const numValue = Number(value);
+      setNetEarnings(isNaN(numValue) ? 0 : numValue);
+    }
   };
 
   return (
@@ -74,7 +84,7 @@ function App() {
           id="netEarnings"
           type="number"
           step="0.01"
-          value={netEarnings}
+          value={inputValue}
           onChange={handleNetEarningsChange}
           placeholder="Enter net earnings"
           inputMode="decimal"
