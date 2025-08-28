@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   // Estado para el valor neto (input principal)
-  const [netEarnings, setNetEarnings] = useState(863.83);
+  const [netEarnings, setNetEarnings] = useState(850);
   const [animateValues, setAnimateValues] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(true);
 
