@@ -17,7 +17,7 @@ function App() {
 
   // Constantes fijas
   const regularHours = 40;
-  const overtimeHours = 5.63;
+  const overtimeHours = 5;
   
     // Tasas de impuestos basadas en colilla original ($922.90)
   const federalRate = 0.08829; // 8.829% ($81.47 / $922.90)
