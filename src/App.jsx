@@ -19,10 +19,10 @@ function App() {
   const regularHours = 40;
   const overtimeHours = 5.63;
   
-  // Porcentajes de deducciones (corregidos según valores reales)
-  const federalRate = 0.08831; // 8.831%
-  const socialSecurityRate = 0.06202; // 6.202%
-  const medicareRate = 0.01450; // 1.450%
+    // Tasas de impuestos basadas en colilla original ($922.90)
+  const federalRate = 0.08829; // 8.829% ($81.47 / $922.90)
+  const socialSecurityRate = 0.06201; // 6.201% ($57.22 / $922.90)
+  const medicareRate = 0.01450; // 1.450% ($13.38 / $922.90)
   
   // Lógica de cálculo según el modo seleccionado
   let hourlyRate, overtimeRate, regularPay, overtimePay, grossPay, federalIncome, socialSecurity, medicare, netPay;
@@ -39,9 +39,9 @@ function App() {
     overtimePay = +(overtimeRate * overtimeHours).toFixed(2);
     grossPay = +(regularPay + overtimePay + creditCardTips).toFixed(2);
     
-    federalIncome = +((regularPay + overtimePay) * -federalRate).toFixed(2);
-    socialSecurity = +((regularPay + overtimePay) * -socialSecurityRate).toFixed(2);
-    medicare = +((regularPay + overtimePay) * -medicareRate).toFixed(2);
+    federalIncome = +(grossPay * -federalRate).toFixed(2);
+    socialSecurity = +(grossPay * -socialSecurityRate).toFixed(2);
+    medicare = +(grossPay * -medicareRate).toFixed(2);
     netPay = +(grossPay + federalIncome + socialSecurity + medicare).toFixed(2);
   } else {
     // Cálculo directo: desde hourlyRate calcular todo
@@ -51,9 +51,9 @@ function App() {
     overtimePay = +(overtimeRate * overtimeHours).toFixed(2);
     grossPay = +(regularPay + overtimePay + creditCardTips).toFixed(2);
     
-    federalIncome = +((regularPay + overtimePay) * -federalRate).toFixed(2);
-    socialSecurity = +((regularPay + overtimePay) * -socialSecurityRate).toFixed(2);
-    medicare = +((regularPay + overtimePay) * -medicareRate).toFixed(2);
+    federalIncome = +(grossPay * -federalRate).toFixed(2);
+    socialSecurity = +(grossPay * -socialSecurityRate).toFixed(2);
+    medicare = +(grossPay * -medicareRate).toFixed(2);
     netPay = +(grossPay + federalIncome + socialSecurity + medicare).toFixed(2);
   }
 
